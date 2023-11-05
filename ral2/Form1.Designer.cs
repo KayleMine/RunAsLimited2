@@ -52,6 +52,7 @@
             this.Login.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.Login.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Login.FocusedState.Parent = this.Login;
+            this.Login.ForeColor = System.Drawing.Color.DimGray;
             this.Login.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Login.HoveredState.Parent = this.Login;
             this.Login.Location = new System.Drawing.Point(17, 103);
@@ -76,6 +77,7 @@
             this.Password.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.Password.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Password.FocusedState.Parent = this.Password;
+            this.Password.ForeColor = System.Drawing.Color.DimGray;
             this.Password.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Password.HoveredState.Parent = this.Password;
             this.Password.Location = new System.Drawing.Point(17, 145);
@@ -149,14 +151,16 @@
             this.PathBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.PathBox.DisabledState.Parent = this.PathBox;
             this.PathBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.PathBox.Enabled = false;
             this.PathBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.PathBox.FocusedState.Parent = this.PathBox;
+            this.PathBox.ForeColor = System.Drawing.Color.DimGray;
             this.PathBox.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.PathBox.HoveredState.Parent = this.PathBox;
             this.PathBox.Location = new System.Drawing.Point(17, 12);
             this.PathBox.Name = "PathBox";
             this.PathBox.PasswordChar = '\0';
-            this.PathBox.PlaceholderText = "Path to application";
+            this.PathBox.PlaceholderText = "Path to application appear here.";
             this.PathBox.SelectedText = "";
             this.PathBox.ShadowDecoration.Parent = this.PathBox;
             this.PathBox.Size = new System.Drawing.Size(342, 36);
@@ -175,6 +179,7 @@
             this.Command_Line.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.Command_Line.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Command_Line.FocusedState.Parent = this.Command_Line;
+            this.Command_Line.ForeColor = System.Drawing.Color.DimGray;
             this.Command_Line.HoveredState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Command_Line.HoveredState.Parent = this.Command_Line;
             this.Command_Line.Location = new System.Drawing.Point(17, 54);
@@ -215,9 +220,10 @@
             this.Controls.Add(this.Create);
             this.Controls.Add(this.Password);
             this.Controls.Add(this.Login);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Run As Limited";
             this.ResumeLayout(false);
 

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
 
 namespace ral2
-{
+{ 
     public partial class Main : Form
     {
         RunAsLibrary.Api Api = new RunAsLibrary.Api();
@@ -15,6 +17,9 @@ namespace ral2
         public string login;
         public string password;
         public string command_line;
+        public string first_launch;
+        public bool no_random;
+      
         private void Sync()
         {
             path = Api.ReadCfg("path");
@@ -22,11 +27,19 @@ namespace ral2
             login = Api.ReadCfg("Login");
             password = Api.ReadCfg("Password");
             command_line = Api.ReadCfg("command_line");
-            
+            first_launch = Api.ReadCfg("first_launch");
+           
+            if (first_launch != null && first_launch.Length > 0 )
+            {
+                no_random = true;
+            }
+
             if (login != null && login.Length > 0 && password != null && password.Length > 0)
             {
                 Login.Text = login;
                 Password.Text = password;
+                Login.Enabled = false;
+                Password.Enabled = false;
             }
 
             if (path != null && path.Length > 0 && path_exe != null && path_exe.Length > 0)
@@ -43,8 +56,34 @@ namespace ral2
         {
             InitializeComponent();
             Sync();
+            if (!no_random) 
+            { 
+                random_acc();
+            }
         }
- 
+        private static Random randoms = new Random();
+
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[randoms.Next(s.Length)]).ToArray());
+        }
+        private void random_acc()
+        {   
+                var account = RandomString(5);
+                var pwd = RandomString(8);
+
+                Api.Create(account, pwd);
+                Login.Enabled = false;
+                Password.Enabled = false;
+                Api.SaveCfg(
+                new KeyValuePair<string, string>("Login", account),
+                new KeyValuePair<string, string>("Password", pwd),
+                new KeyValuePair<string, string>("first_launch", "false")
+                );
+                Sync();
+        }
         private void Create_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(Password.Text) || string.IsNullOrEmpty(Login.Text))
@@ -58,6 +97,8 @@ namespace ral2
             }
 
             Api.Create(Login.Text, Password.Text);
+            Login.Enabled = false;
+            Password.Enabled = false;
             Api.SaveCfg(
             new KeyValuePair<string, string>("Login", Login.Text),
             new KeyValuePair<string, string>("Password", Password.Text)
@@ -79,6 +120,8 @@ namespace ral2
             Api.Remove(login);
             Login.Text = "";
             Password.Text = "";
+            Login.Enabled = true;
+            Password.Enabled = true;
             Api.SaveCfg(
             new KeyValuePair<string, string>("Login", null),
             new KeyValuePair<string, string>("Password", null)
@@ -100,7 +143,7 @@ namespace ral2
             {
                 return;
             }
-           
+            
             Api.SaveCfg(
             new KeyValuePair<string, string>("path", path),
             new KeyValuePair<string, string>("path_exe", path_exe)
