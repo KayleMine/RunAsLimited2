@@ -132,7 +132,7 @@ namespace ral2
         private void Select_App_Click(object sender, EventArgs e)
         {
             path = Api.Get_FolderPath();
-            path_exe = Api.Get_ExePath();
+            path_exe = Api.Get_Exe();
 
             if (string.IsNullOrEmpty(path) || string.IsNullOrEmpty(path_exe))
             {
