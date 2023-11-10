@@ -37,12 +37,11 @@
             this.PathBox = new Siticone.UI.WinForms.SiticoneRoundedTextBox();
             this.Command_Line = new Siticone.UI.WinForms.SiticoneRoundedTextBox();
             this.Select_App = new Siticone.UI.WinForms.SiticoneRoundedButton();
+            this.siticoneRoundedButton1 = new Siticone.UI.WinForms.SiticoneRoundedButton();
             this.SuspendLayout();
             // 
             // Login
             // 
-            this.Login.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Login.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Login.DefaultText = "";
             this.Login.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -66,8 +65,6 @@
             // 
             // Password
             // 
-            this.Password.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Password.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Password.DefaultText = "";
             this.Password.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -94,13 +91,13 @@
             this.Create.CheckedState.Parent = this.Create;
             this.Create.CustomImages.Parent = this.Create;
             this.Create.FillColor = System.Drawing.Color.Green;
-            this.Create.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.Create.ForeColor = System.Drawing.Color.White;
+            this.Create.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.Create.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.Create.HoveredState.Parent = this.Create;
-            this.Create.Location = new System.Drawing.Point(260, 190);
+            this.Create.Location = new System.Drawing.Point(365, 103);
             this.Create.Name = "Create";
             this.Create.ShadowDecoration.Parent = this.Create;
-            this.Create.Size = new System.Drawing.Size(99, 45);
+            this.Create.Size = new System.Drawing.Size(99, 36);
             this.Create.TabIndex = 3;
             this.Create.Text = "Create";
             this.Create.Click += new System.EventHandler(this.Create_Click);
@@ -111,39 +108,35 @@
             this.Remove.CheckedState.Parent = this.Remove;
             this.Remove.CustomImages.Parent = this.Remove;
             this.Remove.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Remove.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.Remove.ForeColor = System.Drawing.Color.White;
+            this.Remove.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.Remove.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.Remove.HoveredState.Parent = this.Remove;
-            this.Remove.Location = new System.Drawing.Point(17, 190);
+            this.Remove.Location = new System.Drawing.Point(365, 145);
             this.Remove.Name = "Remove";
             this.Remove.ShadowDecoration.Parent = this.Remove;
-            this.Remove.Size = new System.Drawing.Size(99, 45);
+            this.Remove.Size = new System.Drawing.Size(99, 36);
             this.Remove.TabIndex = 4;
             this.Remove.Text = "Remove";
             this.Remove.Click += new System.EventHandler(this.Remove_Click);
             // 
             // Run
             // 
-            this.Run.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Run.CheckedState.Parent = this.Run;
             this.Run.CustomImages.Parent = this.Run;
-            this.Run.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.Run.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.Run.ForeColor = System.Drawing.Color.White;
+            this.Run.FillColor = System.Drawing.Color.Green;
+            this.Run.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.Run.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.Run.HoveredState.Parent = this.Run;
-            this.Run.Location = new System.Drawing.Point(17, 250);
+            this.Run.Location = new System.Drawing.Point(17, 187);
             this.Run.Name = "Run";
             this.Run.ShadowDecoration.Parent = this.Run;
-            this.Run.Size = new System.Drawing.Size(342, 45);
+            this.Run.Size = new System.Drawing.Size(342, 47);
             this.Run.TabIndex = 5;
             this.Run.Text = "Run";
             this.Run.Click += new System.EventHandler(this.Run_Click);
             // 
             // PathBox
             // 
-            this.PathBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.PathBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.PathBox.DefaultText = "";
             this.PathBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -168,8 +161,6 @@
             // 
             // Command_Line
             // 
-            this.Command_Line.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Command_Line.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Command_Line.DefaultText = "";
             this.Command_Line.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -195,23 +186,40 @@
             // 
             this.Select_App.CheckedState.Parent = this.Select_App;
             this.Select_App.CustomImages.Parent = this.Select_App;
-            this.Select_App.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.Select_App.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.Select_App.ForeColor = System.Drawing.Color.White;
+            this.Select_App.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.Select_App.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.Select_App.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.Select_App.HoveredState.Parent = this.Select_App;
-            this.Select_App.Location = new System.Drawing.Point(122, 190);
+            this.Select_App.Location = new System.Drawing.Point(365, 12);
             this.Select_App.Name = "Select_App";
             this.Select_App.ShadowDecoration.Parent = this.Select_App;
-            this.Select_App.Size = new System.Drawing.Size(132, 45);
+            this.Select_App.Size = new System.Drawing.Size(99, 36);
             this.Select_App.TabIndex = 8;
             this.Select_App.Text = "Select App";
             this.Select_App.Click += new System.EventHandler(this.Select_App_Click);
+            // 
+            // siticoneRoundedButton1
+            // 
+            this.siticoneRoundedButton1.CheckedState.Parent = this.siticoneRoundedButton1;
+            this.siticoneRoundedButton1.CustomImages.Parent = this.siticoneRoundedButton1;
+            this.siticoneRoundedButton1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.siticoneRoundedButton1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.siticoneRoundedButton1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.siticoneRoundedButton1.HoveredState.Parent = this.siticoneRoundedButton1;
+            this.siticoneRoundedButton1.Location = new System.Drawing.Point(365, 54);
+            this.siticoneRoundedButton1.Name = "siticoneRoundedButton1";
+            this.siticoneRoundedButton1.ShadowDecoration.Parent = this.siticoneRoundedButton1;
+            this.siticoneRoundedButton1.Size = new System.Drawing.Size(99, 36);
+            this.siticoneRoundedButton1.TabIndex = 9;
+            this.siticoneRoundedButton1.Text = "User folder";
+            this.siticoneRoundedButton1.Click += new System.EventHandler(this.siticoneRoundedButton1_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(378, 315);
+            this.ClientSize = new System.Drawing.Size(479, 246);
+            this.Controls.Add(this.siticoneRoundedButton1);
             this.Controls.Add(this.Select_App);
             this.Controls.Add(this.Command_Line);
             this.Controls.Add(this.PathBox);
@@ -238,6 +246,7 @@
         private Siticone.UI.WinForms.SiticoneRoundedTextBox PathBox;
         private Siticone.UI.WinForms.SiticoneRoundedTextBox Command_Line;
         private Siticone.UI.WinForms.SiticoneRoundedButton Select_App;
+        private Siticone.UI.WinForms.SiticoneRoundedButton siticoneRoundedButton1;
     }
 }
 

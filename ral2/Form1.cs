@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
-
+using Vip.Notification;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ral2
 { 
@@ -44,7 +46,7 @@ namespace ral2
 
             if (path != null && path.Length > 0 && path_exe != null && path_exe.Length > 0)
             {
-                PathBox.Text = Path.Combine(path, path_exe);
+                PathBox.Text = path + "/" + path_exe;
             }
 
             if (command_line != null && command_line.Length > 0)
@@ -84,15 +86,23 @@ namespace ral2
                 );
                 Sync();
         }
+
+        private void Empty()
+        {
+            Alert.ShowWarning("Field can't be empty!");
+        }
+
         private void Create_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(Password.Text) || string.IsNullOrEmpty(Login.Text))
             {
+                Empty();
                 return;
             }
 
             if (Login.Text.Length == 0 || Password.Text.Length == 0)
             {
+                Empty();
                 return;
             }
 
@@ -109,11 +119,13 @@ namespace ral2
         private void Remove_Click(object sender, EventArgs e) {
             if (string.IsNullOrEmpty(login))
             {
+                Empty();
                 return;
             }
 
             if (login.Length == 0)
             {
+                Empty();
                 return;
             }
           
@@ -157,10 +169,21 @@ namespace ral2
             new KeyValuePair<string, string>("command_line", Command_Line.Text)
             );
             Sync();
-
+            if (!Directory.Exists(path)) { Alert.ShowError("Something wrong with path!"); return; }
+            if (!File.Exists(path + "/" + path_exe)) { Alert.ShowError("Something wrong with file!"); return; }
+            Alert.ShowSucess("App started!");
             Api.run_target(path, path_exe, login, password, command_line);
         }
 
+
+        private void siticoneRoundedButton1_Click(object sender, EventArgs e)
+        {
+            string path = @"C:\Users\" + login;
+
+            if (!Directory.Exists(path)) { Alert.ShowWarning("Acoount not exists! \n Run something first..."); return; };
+
+            Process.Start("explorer.exe", path);
+        }
     }
 }
 
