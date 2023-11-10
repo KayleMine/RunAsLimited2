@@ -31,7 +31,7 @@ namespace ral2
 
             if (path != null && path.Length > 0 && path_exe != null && path_exe.Length > 0)
             {
-                PathBox.Text = Path.Combine(path, path_exe);
+                PathBox.Text =  path + "/" + path_exe;
             }
 
             if (command_line != null && command_line.Length > 0)
@@ -109,7 +109,10 @@ namespace ral2
         }
 
         private void Run_Click(object sender, EventArgs e)
-        {
+        {   
+        
+            if (!Directory.Exists(path)) { return; }
+            if (!File.Exists(path + "/" + path_exe)) { return; }
             Api.SaveCfg(
             new KeyValuePair<string, string>("command_line", Command_Line.Text)
             );
