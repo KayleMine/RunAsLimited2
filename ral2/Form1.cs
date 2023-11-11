@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -168,7 +168,7 @@ namespace ral2
             Sync();
         }
 
-        private void Run_Click(object sender, EventArgs e)
+        private async void Run_Click(object sender, EventArgs e)
         {
             Api.SaveCfg(
             new KeyValuePair<string, string>("command_line", Command_Line.Text)
@@ -177,13 +177,12 @@ namespace ral2
             if (!Directory.Exists(path)) { Alert.ShowError("Something wrong with path!"); return; }
             if (!File.Exists(path + "/" + path_exe)) { Alert.ShowError("Something wrong with file!"); return; }
             Alert.ShowSucess("App started!");
-
+            Api.run_target(path, path_exe, login, password, command_line);
+         
             if (!string.IsNullOrEmpty(path3) && !string.IsNullOrEmpty(path_exe3))
             {
-              rd_app_run();
+                await rd_app_run();
             }
-            
-            Api.run_target(path, path_exe, login, password, command_line);
         }
 
 
