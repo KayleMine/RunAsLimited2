@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -27,7 +27,8 @@ namespace ral2
         private string path_exe3;
         private string cmd3;
         private bool no_random;
-      
+        private string rd_check;
+        private bool rd_checks;
         private void Sync()
         {
             path = Api.ReadCfg("path");
@@ -40,13 +41,20 @@ namespace ral2
             path3 = Api.ReadCfg("path_3rd");
             path_exe3 = Api.ReadCfg("path_exe_3rd");
             cmd3 = Api.ReadCfg("command_line_3rd");
+            rd_check = Api.ReadCfg("third_check");
+            rd_checks = (rd_check == "1" || rd_check == "2");
 
-            if (first_launch != null && first_launch.Length > 0 )
+            if (!string.IsNullOrEmpty(rd_check))
+            {
+                third_check.Checked = rd_checks;
+            }
+
+            if  (!string.IsNullOrEmpty(first_launch))
             {
                 no_random = true;
             }
 
-            if (login != null && login.Length > 0 && password != null && password.Length > 0)
+            if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(password))
             {
                 Login.Text = login;
                 Password.Text = password;
@@ -54,12 +62,12 @@ namespace ral2
                 Password.Enabled = false;
             }
 
-            if (path != null && path.Length > 0 && path_exe != null && path_exe.Length > 0)
+            if (!string.IsNullOrEmpty(path) && !string.IsNullOrEmpty(path_exe))
             {
                 PathBox.Text = path + "/" + path_exe;
             }
 
-            if (command_line != null && command_line.Length > 0)
+            if (!string.IsNullOrEmpty(command_line))
             {
                 Command_Line.Text = command_line;
             }
@@ -110,12 +118,6 @@ namespace ral2
                 return;
             }
 
-            if (Login.Text.Length == 0 || Password.Text.Length == 0)
-            {
-                Empty();
-                return;
-            }
-
             Api.Create(Login.Text, Password.Text);
             Login.Enabled = false;
             Password.Enabled = false;
@@ -133,12 +135,6 @@ namespace ral2
                 return;
             }
 
-            if (login.Length == 0)
-            {
-                Empty();
-                return;
-            }
-          
             Api.Remove(login);
             Login.Text = "";
             Password.Text = "";
@@ -167,7 +163,7 @@ namespace ral2
             );
             Sync();
         }
-
+       
         private async void Run_Click(object sender, EventArgs e)
         {
             Api.SaveCfg(
@@ -178,10 +174,11 @@ namespace ral2
             if (!File.Exists(path + "/" + path_exe)) { Alert.ShowError("Something wrong with file!"); return; }
             Alert.ShowSucess("App started!");
             Api.run_target(path, path_exe, login, password, command_line);
-         
-            if (!string.IsNullOrEmpty(path3) && !string.IsNullOrEmpty(path_exe3))
+
+
+            if (!string.IsNullOrEmpty(path3) && !string.IsNullOrEmpty(path_exe3) && rd_checks)
             {
-                await rd_app_run();
+                 await rd_app_run();
             }
         }
 
@@ -220,6 +217,13 @@ namespace ral2
             launch.StartInfo.Arguments = cmd3;
             launch.Start();
             await Task.Run(() => launch.WaitForExit());
+        }
+
+        private void third_check_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckState checkState = third_check.CheckState;
+            string checkStateValue = ((int)checkState).ToString();
+            Api.SaveCfg(new KeyValuePair<string, string>("third_check", checkStateValue));
         }
     }
 }

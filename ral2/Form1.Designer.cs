@@ -39,6 +39,9 @@
             this.Select_App = new Siticone.UI.WinForms.SiticoneRoundedButton();
             this.siticoneRoundedButton1 = new Siticone.UI.WinForms.SiticoneRoundedButton();
             this.rd_Party = new Siticone.UI.WinForms.SiticoneRoundedButton();
+            this.third_check = new Siticone.UI.WinForms.SiticoneCheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Login
@@ -128,10 +131,10 @@
             this.Run.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.Run.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.Run.HoveredState.Parent = this.Run;
-            this.Run.Location = new System.Drawing.Point(17, 187);
+            this.Run.Location = new System.Drawing.Point(17, 194);
             this.Run.Name = "Run";
             this.Run.ShadowDecoration.Parent = this.Run;
-            this.Run.Size = new System.Drawing.Size(342, 47);
+            this.Run.Size = new System.Drawing.Size(247, 47);
             this.Run.TabIndex = 5;
             this.Run.Text = "Run";
             this.Run.Click += new System.EventHandler(this.Run_Click);
@@ -223,19 +226,49 @@
             this.rd_Party.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.rd_Party.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.rd_Party.HoveredState.Parent = this.rd_Party;
-            this.rd_Party.Location = new System.Drawing.Point(365, 187);
+            this.rd_Party.Location = new System.Drawing.Point(270, 194);
             this.rd_Party.Name = "rd_Party";
             this.rd_Party.ShadowDecoration.Parent = this.rd_Party;
-            this.rd_Party.Size = new System.Drawing.Size(99, 47);
+            this.rd_Party.Size = new System.Drawing.Size(89, 47);
             this.rd_Party.TabIndex = 10;
             this.rd_Party.Text = "3rd Party";
             this.rd_Party.Click += new System.EventHandler(this.rd_Party_Click);
+            // 
+            // third_check
+            // 
+            this.third_check.AutoSize = true;
+            this.third_check.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.third_check.CheckedState.BorderRadius = 2;
+            this.third_check.CheckedState.BorderThickness = 0;
+            this.third_check.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.third_check.Location = new System.Drawing.Point(10, 19);
+            this.third_check.Name = "third_check";
+            this.third_check.Size = new System.Drawing.Size(65, 17);
+            this.third_check.TabIndex = 11;
+            this.third_check.Text = "On \\ Off";
+            this.third_check.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.third_check.UncheckedState.BorderRadius = 2;
+            this.third_check.UncheckedState.BorderThickness = 0;
+            this.third_check.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.third_check.UseVisualStyleBackColor = true;
+            this.third_check.CheckedChanged += new System.EventHandler(this.third_check_CheckedChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.third_check);
+            this.groupBox1.Location = new System.Drawing.Point(365, 194);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(99, 47);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Toggle 3rd party";
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(479, 246);
+            this.ClientSize = new System.Drawing.Size(488, 253);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.rd_Party);
             this.Controls.Add(this.siticoneRoundedButton1);
             this.Controls.Add(this.Select_App);
@@ -251,6 +284,8 @@
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Run As Limited";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -266,6 +301,8 @@
         private Siticone.UI.WinForms.SiticoneRoundedButton Select_App;
         private Siticone.UI.WinForms.SiticoneRoundedButton siticoneRoundedButton1;
         private Siticone.UI.WinForms.SiticoneRoundedButton rd_Party;
+        private Siticone.UI.WinForms.SiticoneCheckBox third_check;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 
