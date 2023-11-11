@@ -38,6 +38,7 @@
             this.Command_Line = new Siticone.UI.WinForms.SiticoneRoundedTextBox();
             this.Select_App = new Siticone.UI.WinForms.SiticoneRoundedButton();
             this.siticoneRoundedButton1 = new Siticone.UI.WinForms.SiticoneRoundedButton();
+            this.rd_Party = new Siticone.UI.WinForms.SiticoneRoundedButton();
             this.SuspendLayout();
             // 
             // Login
@@ -214,11 +215,28 @@
             this.siticoneRoundedButton1.Text = "User folder";
             this.siticoneRoundedButton1.Click += new System.EventHandler(this.siticoneRoundedButton1_Click);
             // 
+            // rd_Party
+            // 
+            this.rd_Party.CheckedState.Parent = this.rd_Party;
+            this.rd_Party.CustomImages.Parent = this.rd_Party;
+            this.rd_Party.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.rd_Party.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.rd_Party.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.rd_Party.HoveredState.Parent = this.rd_Party;
+            this.rd_Party.Location = new System.Drawing.Point(365, 187);
+            this.rd_Party.Name = "rd_Party";
+            this.rd_Party.ShadowDecoration.Parent = this.rd_Party;
+            this.rd_Party.Size = new System.Drawing.Size(99, 47);
+            this.rd_Party.TabIndex = 10;
+            this.rd_Party.Text = "3rd Party";
+            this.rd_Party.Click += new System.EventHandler(this.rd_Party_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(479, 246);
+            this.Controls.Add(this.rd_Party);
             this.Controls.Add(this.siticoneRoundedButton1);
             this.Controls.Add(this.Select_App);
             this.Controls.Add(this.Command_Line);
@@ -247,6 +265,7 @@
         private Siticone.UI.WinForms.SiticoneRoundedTextBox Command_Line;
         private Siticone.UI.WinForms.SiticoneRoundedButton Select_App;
         private Siticone.UI.WinForms.SiticoneRoundedButton siticoneRoundedButton1;
+        private Siticone.UI.WinForms.SiticoneRoundedButton rd_Party;
     }
 }
 

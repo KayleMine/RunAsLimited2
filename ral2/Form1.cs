@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using Vip.Notification;
@@ -14,13 +16,17 @@ namespace ral2
     {
         RunAsLibrary.Api Api = new RunAsLibrary.Api();
 
-        public string path;
-        public string path_exe;
-        public string login;
-        public string password;
-        public string command_line;
-        public string first_launch;
-        public bool no_random;
+        private string path;
+        private string path_exe;
+        private string login;
+        private string password;
+        private string command_line;
+        private string first_launch;
+        private string delay;
+        private string path3;
+        private string path_exe3;
+        private string cmd3;
+        private bool no_random;
       
         private void Sync()
         {
@@ -30,7 +36,11 @@ namespace ral2
             password = Api.ReadCfg("Password");
             command_line = Api.ReadCfg("command_line");
             first_launch = Api.ReadCfg("first_launch");
-           
+            delay = Api.ReadCfg("delay_3rd");
+            path3 = Api.ReadCfg("path_3rd");
+            path_exe3 = Api.ReadCfg("path_exe_3rd");
+            cmd3 = Api.ReadCfg("command_line_3rd");
+
             if (first_launch != null && first_launch.Length > 0 )
             {
                 no_random = true;
@@ -151,11 +161,6 @@ namespace ral2
                 return;
             }
 
-            if (path.Length == 0 || path_exe.Length == 0)
-            {
-                return;
-            }
-            
             Api.SaveCfg(
             new KeyValuePair<string, string>("path", path),
             new KeyValuePair<string, string>("path_exe", path_exe)
@@ -172,6 +177,12 @@ namespace ral2
             if (!Directory.Exists(path)) { Alert.ShowError("Something wrong with path!"); return; }
             if (!File.Exists(path + "/" + path_exe)) { Alert.ShowError("Something wrong with file!"); return; }
             Alert.ShowSucess("App started!");
+
+            if (!string.IsNullOrEmpty(path3) && !string.IsNullOrEmpty(path_exe3))
+            {
+              rd_app_run();
+            }
+            
             Api.run_target(path, path_exe, login, password, command_line);
         }
 
@@ -183,6 +194,33 @@ namespace ral2
             if (!Directory.Exists(path)) { Alert.ShowWarning("Acoount not exists! \n Run something first..."); return; };
 
             Process.Start("explorer.exe", path);
+        }
+
+        private void rd_Party_Click(object sender, EventArgs e)
+        {
+            Third_Party open_cfg = new Third_Party();
+            open_cfg.ShowDialog();
+        }
+
+        private async Task rd_app_run()
+        {
+            int delayMilliseconds = 0;
+
+            if (!string.IsNullOrEmpty(delay) && int.TryParse(delay, out int parsedDelay))
+            {
+                delayMilliseconds = parsedDelay;
+            }
+
+            await Task.Delay(delayMilliseconds);
+            await async_call();
+        }
+        private async Task async_call()
+        {
+            Process launch = new Process();
+            launch.StartInfo.FileName = Path.Combine(path3, path_exe3);
+            launch.StartInfo.Arguments = cmd3;
+            launch.Start();
+            await Task.Run(() => launch.WaitForExit());
         }
     }
 }
