@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -181,13 +181,14 @@ namespace ral2
                  await rd_app_run();
             }
         }
-
+               
 
         private void siticoneRoundedButton1_Click(object sender, EventArgs e)
         {
-            string path = @"C:\Users\" + login;
+            DirectoryInfo userProfileDirectory = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
+            string path = Path.Combine(userProfileDirectory.Parent.FullName, login);
 
-            if (!Directory.Exists(path)) { Alert.ShowWarning("Acoount not exists! \n Run something first..."); return; };
+            if (!Directory.Exists(path)) { Alert.ShowWarning("Account not exists! \n Run something first..."); return; };
 
             Process.Start("explorer.exe", path);
         }
@@ -212,6 +213,7 @@ namespace ral2
         }
         private async Task async_call()
         {
+            Directory.SetCurrentDirectory(@path3);
             Process launch = new Process();
             launch.StartInfo.FileName = Path.Combine(path3, path_exe3);
             launch.StartInfo.Arguments = cmd3;
@@ -225,6 +227,7 @@ namespace ral2
             string checkStateValue = ((int)checkState).ToString();
             Api.SaveCfg(new KeyValuePair<string, string>("third_check", checkStateValue));
         }
+
     }
 }
 
