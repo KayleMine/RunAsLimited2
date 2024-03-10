@@ -1,5 +1,8 @@
-[Made with RunAsLib](https://github.com/KayleMine/RunAsLibrary/tree/master)
-# RunAsLimited 2
+## RunAsLibrary usage example.
+
+Link to lib.: https://github.com/KayleMine/RunAsLibrary
+
+# RunAsLimited2
  <p align="left">
-  <img width="497" height="521" src="https://i.imgur.com/5fUqctR.png">
+  <img width="391" height="361" src="https://i.imgur.com/c3y5MCA.png">
 </p>
