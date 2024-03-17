@@ -51,7 +51,7 @@
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RunAsLibrary">
-      <HintPath>..\RunAsLibrary.dll</HintPath>
+      <HintPath>..\..\RunAsLibrary\RunAsLibrary\bin\Release\RunAsLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Siticone.UI, Version=1.0.0.3, Culture=neutral, PublicKeyToken=da23b5286e22db85, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
