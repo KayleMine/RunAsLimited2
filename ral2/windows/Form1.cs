@@ -479,13 +479,13 @@ namespace ral2
                     MessageBox.Show($"{errorMessage} not set!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
-                if (!string.IsNullOrEmpty(cmdl))
+                ProcessStartInfo sinfo = new ProcessStartInfo
                 {
-                    appProcess.StartInfo.Arguments = cmdl;
-                }
-
-                appProcess.StartInfo.FileName = App.Replace("/", "\\");
+                    FileName = App.Replace("/", "\\"),
+                    Arguments = cmdl ?? "",
+                    WorkingDirectory = path
+                };
+                appProcess.StartInfo = sinfo;
                 appProcess.Start();
                 await Task.Run(() => appProcess.WaitForExit());
             }
